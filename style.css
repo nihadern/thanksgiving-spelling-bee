@@ -240,15 +240,17 @@ body.idle { cursor: none; }
 
 /* ---------- toast ---------- */
 .toast {
-  position: fixed; z-index: 50; bottom: calc(15 * var(--u)); left: 50%;
-  transform: translate(-50%, 40%) scale(.8); opacity: 0;
-  font-weight: 700; font-size: calc(3 * var(--u)); color: var(--plum);
+  /* lives in the reserved strip under the cards, left of the dock: never covers content */
+  position: fixed; z-index: 50; bottom: calc(3.2 * var(--u)); left: calc(4 * var(--u));
+  transform: translateY(60%) scale(.8); transform-origin: left center; opacity: 0;
+  font-weight: 700; font-size: calc(2.8 * var(--u)); color: var(--plum);
+  border: 3px solid var(--hot);
   background: #fff; border-radius: 999px; padding: calc(1 * var(--u)) calc(3.4 * var(--u));
   box-shadow: 0 calc(.6 * var(--u)) 0 rgba(90,20,102,.35);
   transition: transform .35s cubic-bezier(.2, 1.5, .4, 1), opacity .25s;
   pointer-events: none; white-space: nowrap;
 }
-.toast.show { transform: translate(-50%, 0) scale(1); opacity: 1; }
+.toast.show { transform: none; opacity: 1; }
 
 /* ---------- dock ---------- */
 .dock {
@@ -362,7 +364,8 @@ kbd { font-family: var(--body-font); font-weight: 700; background: var(--lav); b
   .hint { font-size: 3.4vw; }
   .timesup-text { font-size: 17vw; }
   .timesup-sub { font-size: 4.4vw; }
-  .toast { font-size: 4vw; bottom: 100px; }
+  .toast { font-size: 3.6vw; top: 6px; bottom: auto; left: 16px; max-width: calc(100vw - 26vw - 44px); transform: translateY(-60%) scale(.8); }
+  .toast.show { transform: none; }
 }
 
 /* ---------- reduced motion ---------- */
